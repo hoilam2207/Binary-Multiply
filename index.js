@@ -45,7 +45,7 @@ function renderHead(op1, op2) {
                 ${op1}
             </div>
             <div id="second-operator" class="product-multiplier">
-                ${op2}
+                ${insertSpaceEvery6Chars(op2)}
             </div>
         </div>
     `
@@ -108,9 +108,9 @@ function pushZero(str) {
 function focusLast(str) {
     let newStr = ''
     for (let i = 0; i < str.length; i++) {
-        if (i == 10) {
+        if (i == str.length - 2) {
             newStr += str[i] + '['
-        } else if (i == 11) {
+        } else if (i == str.length - 1) {
             newStr += str[i] + ']'
         } else {
             newStr += str[i]
@@ -186,20 +186,20 @@ function solve(first, second) {
             textStep = `Bước ${i+1}:<br/>multiplier0 = 0<br/>dịch phải [product/multiplier] 1 bit`
             prod = `
                 <br/>
-                ${focusLast(op2)}
+                ${focusLast(insertSpaceEvery6Chars(op2))}
                 <br/>
-                ${pushZero(op2)}
+                ${insertSpaceEvery6Chars(pushZero(op2))}
             `
             op2 = pushZero(op2)
         } else {
             textStep = `Bước ${i+1}:<br/>multiplier0 = 1<br/>product = product + multiplicand<br/>dịch phải [product/multiplier] 1 bit`
             prod = `
                 <br/>
-                ${focusLast(op2)}
+                ${focusLast(insertSpaceEvery6Chars(op2))}
                 <br/>
-                ${addBin(op1, op2)}
+                ${insertSpaceEvery6Chars(addBin(op1, op2))}
                 <br/>
-                ${isFull(op1, op2) ? addBin(op1, op2) : pushZero(addBin(op1, op2))}
+                ${isFull(op1, op2) ? insertSpaceEvery6Chars(addBin(op1, op2)) : insertSpaceEvery6Chars(pushZero(addBin(op1, op2)))}
             `
             if (!isFull(op1, op2)) {
                 op2 = addBin(op1, op2)
