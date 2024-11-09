@@ -155,7 +155,7 @@ function solve(first, second) {
                 <br/>
                 ${addBin(op1, op2)}
                 <br/>
-                ${pushZero(op2)}
+                ${pushZero(addBin(op1, op2))}
             `
             op2 = addBin(op1, op2)
             op2 = pushZero(op2)
