@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'SF Mono';
+}
+
+h1 {
+    text-align: center;
+}
+
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.table {
+    border: 1px solid #2e2e2e;
+    border-bottom: none;
+    display: none;
+}
+
+.table.show {
+    display: block;
+}
+
+h3 {
+    margin-top: 80px;
+    text-align: center;
+}
+
+h3.hide {
+    display: none;
+}
+
+.row {
+    display: flex;
+}
+
+.row:nth-child(1) .blank, .row:nth-child(2) .blank {
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.row:last-child .loop-col {
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.blank {
+    flex: 1;
+    display: flex;
+}
+
+.blank.init {
+    padding: 8px;
+}
+
+.loop-col {
+    width: 140px;
+    padding: 8px;
+}
+
+.step {
+    flex: 1;
+    padding: 8px;
+    border-left: 1px solid #2e2e2e;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.multiplicand {
+    padding: 8px;
+    width: 200px;
+    border-left: 1px solid #2e2e2e;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.product-multiplier {
+    padding: 8px;
+    width: 250px;
+    border-left: 1px solid #2e2e2e;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.inputs {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+input {
+    padding: 6px 14px;
+}
+
+button {
+    padding: 6px 20px;
+}
