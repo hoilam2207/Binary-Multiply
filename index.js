@@ -61,10 +61,10 @@ function replace(str, index, char) {
 }
 
 function addBin(sou, des) {
-    let op1 = sou
-    let op2 = des
+    let op1 = '0' + sou
+    let op2 = '0' + des
     let mem = 0
-    for (let i = 5; i >= 0; i--) {
+    for (let i = 6; i >= 0; i--) {
         if (op1[i] === '0' && op2[i] === '0') {
             if (mem == 0) {
                 continue
@@ -89,7 +89,11 @@ function addBin(sou, des) {
             }
         }
     }
-    return op2
+    if (op2[0] === '0') {
+        return op2.slice(1, op2.length)
+    } else {
+        return op2.slice(0, op2.length - 1)
+    }
 }
 
 function pushZero(str) {
@@ -113,6 +117,46 @@ function focusLast(str) {
         }
     }
     return newStr
+}
+
+function isFull(sou, des) {
+    let op1 = '0' + sou
+    let op2 = '0' + des
+    let mem = 0
+    for (let i = 6; i >= 0; i--) {
+        if (op1[i] === '0' && op2[i] === '0') {
+            if (mem == 0) {
+                continue
+            } else {
+                op2 = replace(op2, i, '1')
+                mem = 0
+            }
+        } else if (op1[i] === '1' && op2[i] === '1') {
+            if (mem == 0) {
+                op2 = replace(op2, i, '0')
+                mem = 1
+            } else {
+                op2 = replace(op2, i, '1')
+                mem = 1
+            }
+        } else {
+            if (mem == 0) {
+                op2 = replace(op2, i, '1')
+            } else {
+                op2 = replace(op2, i, '0')
+                mem = 1
+            }
+        }
+    }
+    let newStr = ''
+    for (let i = 1; i < op2.length; i++) {
+        newStr[i-1] += op2[i]
+    }
+    if (op2[0] === '0') {
+        return 0
+    } else {
+        return 1
+    }
 }
 
 function solve(first, second) {
@@ -155,10 +199,14 @@ function solve(first, second) {
                 <br/>
                 ${addBin(op1, op2)}
                 <br/>
-                ${pushZero(addBin(op1, op2))}
+                ${isFull(op1, op2) ? addBin(op1, op2) : pushZero(addBin(op1, op2))}
             `
-            op2 = addBin(op1, op2)
-            op2 = pushZero(op2)
+            if (!isFull(op1, op2)) {
+                op2 = addBin(op1, op2)
+                op2 = pushZero(op2)
+            } else {
+                op2 = addBin(op1, op2)
+            }
         }
 
         const row = document.createElement('div')
@@ -181,7 +229,6 @@ function solve(first, second) {
         `
         table.appendChild(row)
     }
-    addBin(op1, op1)
 }
 
 enter.onclick = () => {
