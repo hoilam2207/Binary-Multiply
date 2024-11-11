@@ -8,19 +8,30 @@ html {
     font-family: 'SF Mono';
 }
 
+body {
+    background-color: #D8F5F2;
+}
+
 h1 {
     text-align: center;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #c6ecff, #035358);
 }
 
 .wrapper {
     width: 1200px;
     margin: 0 auto;
+
 }
 
 .table {
     border: 1px solid #2e2e2e;
     border-bottom: none;
     display: none;
+    background-color: #E8F1DF;
+    border-radius: 14px;
+    overflow: hidden;
 }
 
 .table.show {
@@ -38,6 +49,14 @@ h3.hide {
 
 .row {
     display: flex;
+}
+
+.row:nth-child(1) .multiplicand {
+    background-color: #C4C4FF;
+}
+
+.row:nth-child(1) .product-multiplier {
+    background-color: #C8FFC8;
 }
 
 .row:nth-child(1) .blank, .row:nth-child(2) .blank {

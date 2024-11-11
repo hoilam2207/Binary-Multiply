@@ -221,6 +221,7 @@ function solve(first, second) {
                 </div>
             </div>
             <div class="multiplicand">
+                <br/>
                 ${op1}
             </div>
             <div class="product-multiplier">
